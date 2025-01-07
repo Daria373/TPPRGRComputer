@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Список Клієнтів</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Список Клієнтів</h1>
+  <a href="/clients/add" class="button">Додати Клієнта</a>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ім'я</th>
+      <th>Прізвище</th>
+      <th>Телефон</th>
+      <th>Email</th>
+      <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clients}">
+      <td th:text="${client.clientId}"></td>
+      <td th:text="${client.name}"></td>
+      <td th:text="${client.surname}"></td>
+      <td th:text="${client.phone}"></td>
+      <td th:text="${client.email}"></td>
+      <td>
+        <a
+                th:href="@{/clients/edit/{id}(id=${client.clientId})}"
+                class="button edit"
+        >Редагувати</a>
+        <a
+                th:href="@{/clients/delete/{id}(id=${client.clientId})}"
+                class="button delete"
+        >Видалити</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/home" class="button back">Повернутися</a>
+</div>
+</body>
+</html>

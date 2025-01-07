@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Виробництво комп'ютерів</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container" style="text-align: center">
+  <h1>Виробництво комп'ютерів</h1>
+  <h2>Проект сайту для управління замовленнями на виробництво комп'ютерів</h2>
+  <h3>Цуркан Дар'я КІ-221 ТПП</h3>
+
+  <div class="navigation">
+    <a th:href="@{/clients}" class="button">Клієнти</a>
+    <a th:href="@{/components}" class="button">Компоненти</a>
+    <a th:href="@{/orders}" class="button">Замовлення</a>
+    <a th:href="@{/order-items}" class="button">Деталі замовлень</a>
+  </div>
+
+  <form th:action="@{/logout}" method="post" style="margin-top: 20px;">
+    <button type="submit" class="button logout" style="width: 120px;">Вихід</button>
+  </form>
+</div>
+</body>
+</html>

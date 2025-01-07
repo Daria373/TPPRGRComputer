@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Редагувати компонент</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Редагування компонента</h1>
+
+  <form
+          th:action="@{/components/update/{id}(id=${component.componentId})}"
+          th:object="${component}"
+          method="post"
+          class="form-container"
+  >
+    <input type="hidden" th:field="*{componentId}" />
+
+    <label for="name">Назва:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+    <div
+            th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}"
+            class="error"
+    ></div>
+
+    <label for="price">Ціна:</label>
+    <input type="number" id="price" th:field="*{price}" step="0.01" required />
+    <div
+            th:if="${#fields.hasErrors('price')}"
+            th:errors="*{price}"
+            class="error"
+    ></div>
+
+    <label for="category">Категорія:</label>
+    <input type="text" id="category" th:field="*{category}" required />
+    <div
+            th:if="${#fields.hasErrors('category')}"
+            th:errors="*{category}"
+            class="error"
+    ></div>
+
+    <button type="submit" class="button">Зберегти</button>
+  </form>
+  <a href="/components" class="button back">Повернутися</a>
+</div>
+</body>
+</html>

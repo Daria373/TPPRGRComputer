@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Компоненти</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Компоненти</h1>
+  <a href="/components/add" class="button">Додати Компонент</a>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Назва</th>
+      <th>Ціна</th>
+      <th>Категорія</th>
+      <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="component : ${components}">
+      <td th:text="${component.componentId}"></td>
+      <td th:text="${component.name}"></td>
+      <td th:text="${component.price}"></td>
+      <td th:text="${component.category}"></td>
+      <td>
+        <a
+                th:href="@{/components/edit/{id}(id=${component.componentId})}"
+                class="button edit"
+        >Редагувати</a>
+        <a
+                th:href="@{/components/delete/{id}(id=${component.componentId})}"
+                class="button delete"
+        >Видалити</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/home" class="button back">Повернутися</a>
+</div>
+</body>
+</html>
